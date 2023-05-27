@@ -1,10 +1,7 @@
-package com.ufcity.handler.semantic;
+package com.ufcity.semantic.semantic;
 
-import com.ufcity.handler.models.Device;
-import com.ufcity.handler.models.Resource;
-
-import java.util.HashMap;
-import java.util.Map;
+import ufcitycore.models.Device;
+import ufcitycore.models.Resource;
 
 public abstract class Semantic {
     private String host;

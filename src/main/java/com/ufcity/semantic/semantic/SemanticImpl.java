@@ -3,8 +3,8 @@ package com.ufcity.semantic.semantic;
 import com.bordercloud.sparql.SparqlClient;
 import com.bordercloud.sparql.SparqlClientException;
 import com.bordercloud.sparql.authorization.basic.HTTPBasicAuthSettings;
-import com.ufcity.handler.models.Device;
-import com.ufcity.handler.models.Resource;
+import ufcitycore.models.Device;
+import ufcitycore.models.Resource;
 
 import java.net.URI;
 import java.net.URISyntaxException;
