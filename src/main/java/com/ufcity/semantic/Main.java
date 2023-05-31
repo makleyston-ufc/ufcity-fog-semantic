@@ -8,8 +8,10 @@ import ufcitycore.models.Resource;
 import ufcitycore.mqtt.ConnectionConfig;
 import ufcitycore.mqtt.Subscribe;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import static ufcitycore.config.Config.ReaderYAMLConfig;
 import static ufcitycore.mqtt.ConnectionData.*;
 
 public class Main {
@@ -19,8 +21,13 @@ public class Main {
     static final String version = "0.1";
 
     public static void main(String[] args) throws IOException, MqttException {
-        if (args.length == 0)
-            if (Menu.check(Menu.ReaderConfig()) != 0) return;
+
+        try {
+            ReaderYAMLConfig(new Config());
+        } catch (FileNotFoundException e) {
+            System.err.println("Configuration file not found or not properly written!");
+            throw new RuntimeException(e);
+        }
 
         /*  Initializing the MQTT Broker for edge communication. */
         System.out.println("### MQTT Broker ###");
@@ -28,8 +35,7 @@ public class Main {
         connectionConfigSubEdge.setTopics(getEdgeSubscribeTopics());
         Subscribe subscribeEdge = new Subscribe(connectionConfigSubEdge);
         subscribeEdge.subscribe((topic, message) -> {
-//            System.out.println("## Received message from Edge Computing: ");
-//            System.out.println("## Topic: "+topic+", Message: "+message);
+            System.out.println("## Topic: "+topic+", Message: "+message);
             String[] topicSep = topic.split("/");
             String firstLevelTopic = topicSep[0];
             switch (firstLevelTopic) {
