@@ -16,6 +16,7 @@ dependencies {
     implementation("com.bordercloud:SPARQL-JAVA:[1.0,)")
     implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.1")
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation("org.yaml:snakeyaml:2.0")
 }
 
 tasks.test {
