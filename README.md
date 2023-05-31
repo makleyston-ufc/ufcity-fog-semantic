@@ -9,14 +9,18 @@ UFCity Semantic is a software component that integrates the UFCity solution for 
 Create a configuration file `ufcity-semantic.config`:
 - ./
     - ufcity-semantic.jar
-    - ufcity-semantic.config
+    - config.yaml
 
-Example of a `ufcity-semantic.config` file:
+Example of a `config.yaml` file:
 ```
---fog-address: 172.23.0.4
---cloud-address: 172.23.0.5
---fog-port: 1883
---cloud-port: 1883
+fog-computing:
+  - address: 172.100.100.2
+  - port: 1883
+semantic:
+ - address: 172.100.100.5
+ - port: 3030
+ - username: admin
+ - password: admin
 ```
 
 Note: Into the Docker environment can use the hostname instead IP.
